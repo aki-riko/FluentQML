@@ -1,0 +1,8 @@
+module dialogs
+OverlayDialogCore OverlayDialogCore.qml
+MaskedDialog MaskedDialog.qml
+MessageBox MessageBox.qml
+DialogBoxCore DialogBoxCore.qml
+ConfirmDialog ConfirmDialog.qml
+FlyoutSheet FlyoutSheet.qml
+ProgressDialog ProgressDialog.qml

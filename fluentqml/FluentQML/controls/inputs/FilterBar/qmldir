@@ -1,0 +1,4 @@
+module FilterBar
+
+FilterBar FilterBar.qml
+FilterBarCore FilterBarCore.qml

@@ -1,0 +1,8 @@
+module effects
+Shadow Shadow.qml
+ColorOverlay ColorOverlay.qml
+OpacityMask OpacityMask.qml
+GaussianBlur GaussianBlur.qml
+ShadowedRectangle ShadowedRectangle.qml
+ToggleAnimation ToggleAnimation.qml
+MatrixRain MatrixRain.qml

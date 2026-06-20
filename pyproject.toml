@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fluentqml"
+version = "0.1.0"
+description = "A pure QML-based Fluent Design component library with 120fps+ smooth animations"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "aki-riko"}
+]
+keywords = ["qml", "fluent", "ui", "pyside6", "qt", "design"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: User Interfaces",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "PySide6>=6.5.0",
+    "qrcode>=7.0",
+]
+
+[project.optional-dependencies]
+macos = [
+    "pyobjc-framework-Cocoa>=9.0",
+]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "maturin>=1.0",  # 构建 fluentqml-rs Rust 加速模块
+]
+# 可选: Rust 加速 (FluentSqlListModel 自动检测使用)
+# 安装: cd rust && maturin build --release && pip install target/wheels/fluentqml_rs-*.whl
+rust = [
+    "fluentqml-rs>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/aki-riko/FluentQML"
+Documentation = "https://github.com/aki-riko/FluentQML#readme"
+Repository = "https://github.com/aki-riko/FluentQML"
+Issues = "https://github.com/aki-riko/FluentQML/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fluentqml*"]
+
+[tool.setuptools.package-data]
+fluentqml = ["FluentQML/**/*.qml", "FluentQML/**/*.js", "FluentQML/qmldir", "**/*.svg", "**/*.png", "**/*.qsb", "py.typed", "FluentQML/controls/icons/fluent/LICENSE"]

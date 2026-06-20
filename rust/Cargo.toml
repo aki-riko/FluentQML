@@ -1,0 +1,20 @@
+[package]
+name = "fluentqml_rs"
+version = "0.1.0"
+edition = "2021"
+description = "FluentQML Rust acceleration: SQLite paged fetcher for SqlListModel"
+authors = ["aki-riko"]
+license = "MIT"
+
+[lib]
+name = "fluentqml_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.22", features = ["extension-module", "abi3-py39"] }
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3

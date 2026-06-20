@@ -1,0 +1,74 @@
+module inputs
+
+# Base classes 基类
+InputCore InputCore.qml
+
+# Utils 工具组件
+FocusLine FocusLine.qml
+CycleWheelPicker CycleWheelPicker.qml
+
+# Standalone 独立组件
+Chip Chip.qml
+ImageCropper ImageCropper.qml
+ImageCropperDialog ImageCropperDialog.qml
+FilterBar FilterBar/FilterBar.qml
+FilterBarCore FilterBar/FilterBarCore.qml
+PasswordStrengthIndicator PasswordStrengthIndicator.qml
+PinInput PinInput.qml
+ShortcutEditor ShortcutEditor.qml
+
+# Toggle 切换控件 (统一入口)
+# Use: Toggle { controlType: FluentEnums.toggle.control_xxx; type: FluentEnums.toggle.type_xxx }
+Toggle Toggle/Toggle.qml
+CheckBox Toggle/CheckBox.qml
+RadioButton Toggle/RadioButton.qml
+ToggleSwitch Toggle/ToggleSwitch.qml
+CheckIndicator Toggle/ToggleCheckIndicator.qml
+
+# LineEdit 单行输入 (统一入口，通过 inputType 枚举切换类型)
+# Use: LineEdit { inputType: FluentEnums.input.type_xxx }
+# Types: type_normal, type_password, type_search, type_label, type_tag
+LineEdit LineEdit/LineEditCore.qml
+
+# TextEdit 多行输入 (统一入口，通过 multilineType 枚举切换类型)
+# Use: TextEdit { multilineType: FluentEnums.input.multiline_xxx }
+# Types: multiline_plain, multiline_browser
+TextEdit TextEdit/TextEditCore.qml
+
+# SpinBox 数字输入 (modular architecture 模块化架构)
+SpinBox SpinBox/SpinBox.qml
+SpinBoxCore SpinBox/SpinBoxCore.qml
+SpinBoxButton SpinBox/SpinBoxButton.qml
+
+# Slider 滑块
+Slider Slider/SliderCore.qml
+SliderCore Slider/SliderCore.qml
+BeforeAfterSlider Slider/BeforeAfterSlider.qml
+
+# ComboBox 下拉框
+ComboBox ComboBox/ComboBoxEntry.qml
+ComboBoxCore ComboBox/ComboBoxCore.qml
+ComboBoxDefault ComboBox/ComboBoxDefault.qml
+ComboBoxFont ComboBox/ComboBoxFont.qml
+ComboBoxMulti ComboBox/ComboBoxMulti.qml
+ComboBoxTree ComboBox/ComboBoxTree.qml
+ComboBoxMultiTree ComboBox/ComboBoxMultiTree.qml
+
+# DateTimePicker 日期时间选择（统一组件）
+DateTimePicker Picker/DateTimePicker.qml
+
+# CalendarPicker 日历选择
+# Use CalendarPicker { type: FluentEnums.calendarPicker.type_range } for range mode
+CalendarPickerCore DatePicker/CalendarPickerCore.qml
+CalendarPicker DatePicker/CalendarPicker.qml
+
+# ColorPicker 颜色选择 (modular architecture 模块化架构)
+# Use ColorPicker { type: FluentEnums.colorPicker.type_xxx } for different modes
+# Types: type_dialog, type_palette, type_picker, type_circle, type_screen
+ColorPicker ColorPicker/ColorPicker.qml
+# Internal modules (keep GradientSlider for standalone use) 内部模块
+GradientSlider ColorPicker/GradientSlider.qml
+
+# Rating 评分组件
+Rating Rating/Rating.qml
+RatingCore Rating/RatingCore.qml

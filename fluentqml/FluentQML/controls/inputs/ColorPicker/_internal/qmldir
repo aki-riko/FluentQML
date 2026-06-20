@@ -1,0 +1,12 @@
+module _internal
+
+# ColorPicker internal modules 颜色选择器内部模块
+ColorPickerPanel ColorPickerPanel.qml
+ColorPickerHueSlider ColorPickerHueSlider.qml
+ColorPickerChannelSlider ColorPickerChannelSlider.qml
+ColorPalette ColorPalette.qml
+ColorPickerTrigger ColorPickerTrigger.qml
+ColorPickerInputs ColorPickerInputs.qml
+ColorCircles ColorCircles.qml
+ColorPickerDialog ColorPickerDialog.qml
+ColorPickerDropdown ColorPickerDropdown.qml

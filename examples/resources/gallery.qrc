@@ -1,0 +1,16 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>image/avatar/avatar.png</file>
+        <file>image/horizontal/1.jpg</file>
+        <file>image/horizontal/2.jpg</file>
+        <file>image/horizontal/3.jpg</file>
+        <file>image/horizontal/4.jpg</file>
+        <file>image/vertical/1.jpg</file>
+        <file>image/vertical/2.jpg</file>
+        <file>image/vertical/3.jpg</file>
+        <file>image/vertical/4.jpg</file>
+        <file>image/background.jpg</file>
+        <file>app_icon.svg</file>
+    </qresource>
+</RCC>

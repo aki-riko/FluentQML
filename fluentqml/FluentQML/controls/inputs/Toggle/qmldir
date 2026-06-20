@@ -1,0 +1,11 @@
+module Toggle
+Toggle Toggle.qml
+CheckBox CheckBox.qml
+RadioButton RadioButton.qml
+ToggleSwitch ToggleSwitch.qml
+CheckIndicator ToggleCheckIndicator.qml
+ToggleCheckIndicator ToggleCheckIndicator.qml
+ToggleRadioIndicator ToggleRadioIndicator.qml
+ToggleSwitchIndicator ToggleSwitchIndicator.qml
+ToggleDefaultContent ToggleDefaultContent.qml
+ToggleSubtitleContent ToggleSubtitleContent.qml

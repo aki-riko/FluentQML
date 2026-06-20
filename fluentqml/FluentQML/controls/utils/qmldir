@@ -1,0 +1,7 @@
+module utils
+singleton PopupUtils PopupUtils.qml
+PopupWindowCore PopupWindowCore.qml
+ViewportMixin ViewportMixin.qml
+ViewportCulling ViewportCulling.qml
+HorizontalScrollMixin HorizontalScrollMixin.qml
+WindowDragHandle WindowDragHandle.qml

@@ -1,0 +1,9 @@
+module menus
+MenuCore MenuCore.qml
+MenuDelegate MenuDelegate.qml
+TreeMenuDelegate TreeMenuDelegate.qml
+ContextMenu ContextMenu.qml
+Menu Menu.qml
+Action Action.qml
+MenuSeparator MenuSeparator.qml
+SystemTrayMenu SystemTrayMenu.qml

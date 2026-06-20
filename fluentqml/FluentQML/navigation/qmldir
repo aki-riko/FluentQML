@@ -1,0 +1,9 @@
+module navigation
+NavigationBar NavigationBar.qml
+NavigationBarItem NavigationBarItem.qml
+NavigationView NavigationView.qml
+NavigationViewItem NavigationViewItem.qml
+PipsPager PipsPager.qml
+StatusBar StatusBar.qml
+ToggleNavigationBar ToggleNavigationBar.qml
+ToolBar ToolBar.qml

@@ -1,0 +1,9 @@
+module navigation
+MenuBar MenuBar.qml
+Paginator Paginator.qml
+Pivot Pivot.qml
+SegmentedControl SegmentedControl.qml
+TabWidget TabWidget.qml
+Breadcrumb Breadcrumb.qml
+StackedWidget StackedWidget.qml
+NavigationProfileCard NavigationProfileCard.qml

@@ -1,0 +1,6 @@
+module _internal
+
+ProgressBarImpl ProgressBarImpl.qml
+ProgressRingImpl ProgressRingImpl.qml
+IndeterminateArcImpl IndeterminateArcImpl.qml
+IndeterminateBarImpl IndeterminateBarImpl.qml

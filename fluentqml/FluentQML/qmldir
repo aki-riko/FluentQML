@@ -1,0 +1,228 @@
+module FluentQML
+
+# ==================== Core 核心 ====================
+singleton Enums Enums.qml
+singleton Translator Translator.qml
+singleton DpiManager DpiManager.qml
+WindowsCore WindowsCore.qml
+NavigationWindowCore NavigationWindowCore.qml
+Windows Windows.qml
+
+# ==================== Effects 特效 ====================
+Shadow effects/Shadow.qml
+ColorOverlay effects/ColorOverlay.qml
+OpacityMask effects/OpacityMask.qml
+GaussianBlur effects/GaussianBlur.qml
+ShadowedRectangle effects/ShadowedRectangle.qml
+ToggleAnimation effects/ToggleAnimation.qml
+MatrixRain effects/MatrixRain.qml
+
+# ==================== Icons 图标 ====================
+Icon controls/icons/Icon.qml
+ChevronIcon controls/icons/ChevronIcon.qml
+CheckIcon controls/icons/CheckIcon.qml
+CloseIcon controls/icons/CloseIcon.qml
+
+# ==================== Buttons 按钮 ====================
+Button controls/buttons/FluentButton/ButtonCore.qml
+ButtonCore controls/buttons/FluentButton/ButtonCore.qml
+CustomButtonCore controls/buttons/FluentButton/CustomButtonCore.qml
+ButtonContent controls/buttons/FluentButton/ButtonContent.qml
+ButtonDropdown controls/buttons/FluentButton/ButtonDropdown.qml
+ButtonProgress controls/buttons/FluentButton/ButtonProgress.qml
+CloseButton controls/buttons/CloseButton.qml
+
+# ==================== Containers 容器 ====================
+Widget controls/containers/Widget.qml
+CommandBar controls/containers/CommandBar/CommandBarEntry.qml
+ComponentCard controls/containers/ComponentCard.qml
+DropZone controls/containers/DropZone.qml
+Timeline controls/containers/Timeline.qml
+TimelineCore controls/containers/TimelineCore.qml
+Waterfall controls/containers/Waterfall.qml
+
+# Card 卡片
+Card controls/containers/Card/Card.qml
+ExampleCard controls/containers/Card/ExampleCard.qml
+
+# Drawer 抽屉
+Drawer controls/containers/Drawer/Drawer.qml
+
+# Expander 展开器
+ExpanderCore controls/containers/Expander/ExpanderCore.qml
+Expander controls/containers/Expander/ExpanderEntry.qml
+GroupBox controls/containers/Expander/GroupBox.qml
+
+# Layout 布局
+FlowLayout controls/containers/Layout/FlowLayout.qml
+#GridLayout controls/containers/Layout/GridLayout.qml
+HBoxLayout controls/containers/Layout/HBoxLayout.qml
+VBoxLayout controls/containers/Layout/VBoxLayout.qml
+RowFit controls/containers/Layout/RowFit.qml
+SplitPane controls/containers/Layout/SplitPane.qml
+#SplitView controls/containers/Layout/SplitView.qml
+
+# ScrollBar 滚动条
+ScrollBarEntry controls/containers/FluentScrollBar/ScrollBarEntry.qml
+ScrollBar controls/containers/FluentScrollBar/ScrollBar.qml
+ScrollArea controls/containers/ScrollArea.qml
+#Flickable controls/containers/Flickable.qml
+
+# Separator 分隔线
+Separator controls/containers/Separator/Separator.qml
+
+# ==================== Data 数据展示 ====================
+DataWidgetCore controls/data/DataWidgetCore.qml
+Label controls/data/Label/Label.qml
+Stepper controls/data/Step/Stepper.qml
+AvatarSelector controls/data/Avatar/AvatarSelector.qml
+ListView controls/data/List/ListView.qml
+TableView controls/data/Table/TableView.qml
+TreeView controls/data/List/TreeWidget/TreeView.qml
+Avatar controls/data/Avatar/Avatar.qml
+Badge controls/data/Badge/Badge.qml
+Carousel controls/data/Carousel/Carousel.qml
+HorizontalPipsPager controls/data/FlipView/HorizontalPipsPager.qml
+ImageWidget controls/data/Label/ImageWidget.qml
+ListWidget controls/data/List/ListWidget.qml
+ListWidgetItem controls/data/List/ListWidgetItem.qml
+Marquee controls/data/Marquee.qml
+QRCode controls/data/QRCode.qml
+CircularGauge controls/data/CircularGauge.qml
+Tag controls/data/Badge/Tag.qml
+TableWidget controls/data/Table/TableWidget.qml
+TreeWidget controls/data/List/TreeWidget/TreeWidget.qml
+VerticalPipsPager controls/data/FlipView/VerticalPipsPager.qml
+Watermark controls/data/Watermark.qml
+AudioWaveform controls/data/AudioWaveform.qml
+ChartView controls/data/Chart/ChartView.qml
+ChartDataZoom controls/data/Chart/ChartDataZoom.qml
+IndicatorBar controls/data/IndicatorBar.qml
+
+# ==================== Navigation 导航 ====================
+# controls/navigation
+MenuBar controls/navigation/MenuBar.qml
+Paginator controls/navigation/Paginator.qml
+Pivot controls/navigation/Pivot.qml
+SegmentedControl controls/navigation/SegmentedControl.qml
+TabWidget controls/navigation/TabWidget.qml
+Breadcrumb controls/navigation/Breadcrumb.qml
+StackedWidget controls/navigation/StackedWidget.qml
+NavigationProfileCard controls/navigation/NavigationProfileCard.qml
+
+# navigation (顶层)
+NavigationBar navigation/NavigationBar.qml
+NavigationBarItem navigation/NavigationBarItem.qml
+NavigationView navigation/NavigationView.qml
+NavigationViewItem navigation/NavigationViewItem.qml
+PipsPager navigation/PipsPager.qml
+StatusBar navigation/StatusBar.qml
+ToggleNavigationBar navigation/ToggleNavigationBar.qml
+#ToolBar navigation/ToolBar.qml
+
+# ==================== Feedback 反馈 ====================
+Confetti controls/feedback/Confetti.qml
+InfoBarCore controls/feedback/InfoBar/InfoBarCore.qml
+InfoBar controls/feedback/InfoBar/InfoBarEntry.qml
+DesktopNotification controls/feedback/Notification/DesktopNotification.qml
+singleton NotificationManager controls/feedback/Notification/NotificationManager.qml
+Toast controls/feedback/Notification/Toast.qml
+Progress controls/feedback/Progress/Progress.qml
+ProgressCore controls/feedback/Progress/ProgressCore.qml
+ProgressBar controls/feedback/Progress/ProgressBar.qml
+ProgressRing controls/feedback/Progress/ProgressRing.qml
+EmptyState controls/feedback/State/EmptyState.qml
+EmptyDataState controls/feedback/State/EmptyDataState.qml
+OfflineState controls/feedback/State/OfflineState.qml
+ResultState controls/feedback/State/ResultState.qml
+Skeleton controls/feedback/State/Skeleton.qml
+TipPopup controls/feedback/Tooltip/TipPopup.qml
+Flyout controls/feedback/Tooltip/Flyout.qml
+TeachingTip controls/feedback/Tooltip/TeachingTip.qml
+#ToolTip controls/feedback/Tooltip/ToolTipEntry.qml
+TooltipCore controls/feedback/Tooltip/TooltipCore.qml
+HintIcon controls/feedback/Tooltip/HintIcon.qml
+SplashScreen controls/feedback/SplashScreen/SplashScreen.qml
+
+# ==================== Inputs 输入 ====================
+InputCore controls/inputs/InputCore.qml
+FocusLine controls/inputs/FocusLine.qml
+CycleWheelPicker controls/inputs/CycleWheelPicker.qml
+Chip controls/inputs/Chip.qml
+ImageCropper controls/inputs/ImageCropper.qml
+ImageCropperDialog controls/inputs/ImageCropperDialog.qml
+FilterBar controls/inputs/FilterBar/FilterBar.qml
+FilterBarCore controls/inputs/FilterBar/FilterBarCore.qml
+PasswordStrengthIndicator controls/inputs/PasswordStrengthIndicator.qml
+PinInput controls/inputs/PinInput.qml
+ShortcutEditor controls/inputs/ShortcutEditor.qml
+Toggle controls/inputs/Toggle/Toggle.qml
+CheckBox controls/inputs/Toggle/CheckBox.qml
+RadioButton controls/inputs/Toggle/RadioButton.qml
+ToggleSwitch controls/inputs/Toggle/ToggleSwitch.qml
+CheckIndicator controls/inputs/Toggle/ToggleCheckIndicator.qml
+LineEdit controls/inputs/LineEdit/LineEditCore.qml
+LocalSearchBar controls/inputs/Search/LocalSearchBar.qml
+TextEdit controls/inputs/TextEdit/TextEditCore.qml
+SpinBox controls/inputs/SpinBox/SpinBox.qml
+SpinBoxCore controls/inputs/SpinBox/SpinBoxCore.qml
+SpinBoxButton controls/inputs/SpinBox/SpinBoxButton.qml
+#Slider controls/inputs/Slider/SliderCore.qml
+SliderCore controls/inputs/Slider/SliderCore.qml
+BeforeAfterSlider controls/inputs/Slider/BeforeAfterSlider.qml
+#ComboBox controls/inputs/ComboBox/ComboBoxEntry.qml
+ComboBoxCore controls/inputs/ComboBox/ComboBoxCore.qml
+ComboBoxEntry controls/inputs/ComboBox/ComboBoxEntry.qml
+ComboBoxDefault controls/inputs/ComboBox/ComboBoxDefault.qml
+ComboBoxFont controls/inputs/ComboBox/ComboBoxFont.qml
+ComboBoxMulti controls/inputs/ComboBox/ComboBoxMulti.qml
+ComboBoxTree controls/inputs/ComboBox/ComboBoxTree.qml
+ComboBoxMultiTree controls/inputs/ComboBox/ComboBoxMultiTree.qml
+DateTimePicker controls/inputs/Picker/DateTimePicker.qml
+CalendarPickerCore controls/inputs/DatePicker/CalendarPickerCore.qml
+CalendarPicker controls/inputs/DatePicker/CalendarPicker.qml
+ColorPicker controls/inputs/ColorPicker/ColorPicker.qml
+GradientSlider controls/inputs/ColorPicker/GradientSlider.qml
+Rating controls/inputs/Rating/Rating.qml
+RatingCore controls/inputs/Rating/RatingCore.qml
+
+# ==================== Menus 菜单 ====================
+MenuCore controls/menus/MenuCore.qml
+MenuDelegate controls/menus/MenuDelegate.qml
+TreeMenuDelegate controls/menus/TreeMenuDelegate.qml
+ContextMenu controls/menus/ContextMenu.qml
+#Menu controls/menus/Menu.qml
+Action controls/menus/Action.qml
+MenuSeparator controls/menus/MenuSeparator.qml
+SystemTrayMenu controls/menus/SystemTrayMenu.qml
+
+# ==================== Settings 设置 ====================
+SettingsCardCore controls/settings/SettingsCard/SettingsCardCore.qml
+SettingsCardContent controls/settings/SettingsCard/SettingsCardContent.qml
+SettingsCard controls/settings/SettingsCard/SettingsCard.qml
+SettingsCardGroup controls/settings/SettingsCard/SettingsCardGroup.qml
+
+# ==================== Dialogs 对话框 ====================
+MaskedDialog controls/dialogs/MaskedDialog.qml
+MessageBox controls/dialogs/MessageBox.qml
+DialogBoxCore controls/dialogs/DialogBoxCore.qml
+ConfirmDialog controls/dialogs/ConfirmDialog.qml
+FlyoutSheet controls/dialogs/FlyoutSheet.qml
+ProgressDialog controls/dialogs/ProgressDialog.qml
+
+# ==================== Auth 认证 ====================
+LoginWindow controls/auth/LoginWindow.qml
+
+# ==================== Chat 聊天 ====================
+ChatBubble controls/chat/ChatBubble.qml
+ChatMessageList controls/chat/ChatMessageList.qml
+CodeBlock controls/chat/CodeBlock.qml
+MarkdownView controls/chat/MarkdownView.qml
+
+# ==================== Utils 工具 ====================
+singleton PopupUtils controls/utils/PopupUtils.qml
+PopupWindowCore controls/utils/PopupWindowCore.qml
+ViewportMixin controls/utils/ViewportMixin.qml
+ViewportCulling controls/utils/ViewportCulling.qml
+HorizontalScrollMixin controls/utils/HorizontalScrollMixin.qml
+WindowDragHandle controls/utils/WindowDragHandle.qml

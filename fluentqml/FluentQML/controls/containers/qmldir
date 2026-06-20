@@ -1,0 +1,42 @@
+module containers
+
+# Core 核心类
+Widget Widget.qml
+
+# Standalone 独立组件
+# CommandBar 命令栏 (moved to CommandBar/ folder)
+CommandBar CommandBar/CommandBarEntry.qml
+ComponentCard ComponentCard.qml
+DropZone DropZone.qml
+Timeline Timeline.qml
+TimelineCore TimelineCore.qml
+Waterfall Waterfall.qml
+
+# Card 卡片
+Card Card/Card.qml
+ExampleCard Card/ExampleCard.qml
+
+# Drawer 抽屉
+Drawer Drawer/Drawer.qml
+
+# Expander 展开器
+ExpanderCore Expander/ExpanderCore.qml
+Expander Expander/ExpanderEntry.qml
+GroupBox Expander/GroupBox.qml
+
+# Layout 布局
+FlowLayout Layout/FlowLayout.qml
+GridLayout Layout/GridLayout.qml
+HBoxLayout Layout/HBoxLayout.qml
+VBoxLayout Layout/VBoxLayout.qml
+RowFit Layout/RowFit.qml
+SplitPane Layout/SplitPane.qml
+
+# ScrollBar 滚动条
+ScrollBarEntry FluentScrollBar/ScrollBarEntry.qml
+ScrollBar FluentScrollBar/ScrollBar.qml
+ScrollArea ScrollArea.qml
+Flickable Flickable.qml
+
+# Separator 分隔线
+Separator Separator/Separator.qml

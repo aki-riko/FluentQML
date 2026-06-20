@@ -1,0 +1,36 @@
+module feedback
+
+# Standalone 独立组件
+Confetti Confetti.qml
+
+# InfoBar 信息条
+InfoBarCore InfoBar/InfoBarCore.qml
+InfoBar InfoBar/InfoBarEntry.qml
+
+# Notification 通知
+DesktopNotification Notification/DesktopNotification.qml
+singleton NotificationManager Notification/NotificationManager.qml
+Toast Notification/Toast.qml
+
+# Progress 进度
+Progress Progress/Progress.qml
+ProgressCore Progress/ProgressCore.qml
+ProgressBar Progress/ProgressBar.qml
+ProgressRing Progress/ProgressRing.qml
+
+# State 状态
+EmptyState State/EmptyState.qml
+EmptyDataState State/EmptyDataState.qml
+OfflineState State/OfflineState.qml
+ResultState State/ResultState.qml
+Skeleton State/Skeleton.qml
+
+# Tooltip 提示
+TipPopup Tooltip/TipPopup.qml
+Flyout Tooltip/Flyout.qml
+TeachingTip Tooltip/TeachingTip.qml
+ToolTip Tooltip/ToolTipEntry.qml
+TooltipCore Tooltip/TooltipCore.qml
+
+# SplashScreen 启动画面
+SplashScreen SplashScreen/SplashScreen.qml

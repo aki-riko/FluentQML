@@ -1,0 +1,7 @@
+module controls.settings
+
+# Modular SettingsCard components 模块化设置卡片组件
+SettingsCardCore SettingsCard/SettingsCardCore.qml
+SettingsCardContent SettingsCard/SettingsCardContent.qml
+SettingsCard SettingsCard/SettingsCard.qml
+SettingsCardGroup SettingsCard/SettingsCardGroup.qml

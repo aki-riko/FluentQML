@@ -1,0 +1,6 @@
+module SettingsCard
+
+SettingsCardCore SettingsCardCore.qml
+SettingsCardContent SettingsCardContent.qml
+SettingsCard SettingsCard.qml
+SettingsCardGroup SettingsCardGroup.qml

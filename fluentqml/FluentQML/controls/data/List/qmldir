@@ -1,0 +1,5 @@
+module List
+ListWidget ListWidget.qml
+ListWidgetItem ListWidgetItem.qml
+TreeWidget TreeWidget/TreeWidget.qml
+TreeView TreeWidget/TreeView.qml
