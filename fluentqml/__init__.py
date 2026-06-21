@@ -14,9 +14,9 @@ _os.environ.setdefault("QML_XHR_ALLOW_FILE_READ", "1")
 
 try:
     from importlib.metadata import version as _get_version
-    __version__ = _get_version("fluentqml")
+    __version__ = _get_version("fqml")  # PyPI 分发名为 fqml
 except Exception:
-    __version__ = "0.1.0"  # 回退值：开发模式或未安装时
+    __version__ = "0.2.0"  # 回退值：开发模式或未安装时
 __author__ = "aki-riko"
 
 from .python.core import (

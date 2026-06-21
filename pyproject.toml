@@ -1,11 +1,11 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "wheel", "setuptools-rust>=1.5"]
 build-backend = "setuptools.build_meta"
 
 [project]
 # PyPI 分发名为 fqml(pip install fqml);导入名仍为 fluentqml(import fluentqml)
 name = "fqml"
-version = "0.1.0"
+version = "0.2.0"
 description = "A pure QML-based Fluent Design component library with 120fps+ smooth animations"
 readme = "README.md"
 license = {file = "LICENSE"}
@@ -59,3 +59,12 @@ include = ["fluentqml*"]
 
 [tool.setuptools.package-data]
 fluentqml = ["FluentQML/**/*.qml", "FluentQML/**/*.js", "FluentQML/qmldir", "FluentQML/**/qmldir", "FluentQML/**/*.json", "FluentQML/**/*.frag", "**/*.svg", "**/*.png", "**/*.qsb", "py.typed", "FluentQML/controls/icons/fluent/LICENSE"]
+
+# Rust 加速扩展(可选):SqlListModel 的 SQLite 分页加速。
+# 编为顶层模块 fluentqml_rs(代码 import fluentqml_rs),abi3 一个 wheel 兼容 py3.9+。
+# 编译失败时 SqlListModel 自动回退纯 Python 实现,不影响主功能。
+[[tool.setuptools-rust.ext-modules]]
+target = "fluentqml_rs"
+path = "rust/Cargo.toml"
+binding = "PyO3"
+py-limited-api = "auto"
