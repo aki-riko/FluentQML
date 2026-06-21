@@ -11,7 +11,7 @@ import "controls/containers"
 import "controls/feedback/Notification"
 import "controls/data"
 
-// WindowsCore - Base class for all Window 所有FluentWindow的基类
+// WindowsCore - Base class for all Window 所有 Window 的基类
 // Pure QML: rounded corners + shadow + titlebar + resize 纯QML实现
 // Supports top/left title bar layout 支持顶部/左侧标题栏布局
 Window {

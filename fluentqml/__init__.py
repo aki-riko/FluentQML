@@ -6,7 +6,7 @@
 
 """FluentQML - A QML-based Fluent Design component library"""
 
-# Allow QML XHR to read local files (needed by FluentTranslator to load i18n JSON).
+# Allow QML XHR to read local files (needed by Translator to load i18n JSON).
 # Must be set before QQmlEngine construction. Downstream code can opt out by setting
 # the env var to "0" before importing fluentqml.
 import os as _os

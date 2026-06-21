@@ -6,7 +6,7 @@ import QtQuick
 import QtQuick.Layouts
 import "../.."
 import "../../effects"
-import "../buttons/FluentButton"
+import "../buttons/Button"
 import "../inputs/LineEdit"
 import "../inputs/Toggle"
 import "../inputs"

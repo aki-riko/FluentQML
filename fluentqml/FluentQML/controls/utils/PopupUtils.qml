@@ -7,13 +7,7 @@ import QtQuick
 
 // PopupUtils - 弹出层公共工具
 QtObject {
-    
-    // Find popup layer 查找弹出层
-    function findPopupLayer(item) {
-        if (!item || !item.Window || !item.Window.contentItem) return null
-        return findChildByName(item.Window.contentItem, "FluentPopupLayer")
-    }
-    
+
     // Find child by name 按名称查找子元素
     function findChildByName(parent, name) {
         if (!parent || !parent.children) return null

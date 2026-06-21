@@ -9,7 +9,7 @@ import "../buttons"
 import "_internal"
 
 // Pivot - Pivot navigation component 透视导航组件
-// Refactored to use Button for stable hover 重构使用FluentButton实现稳定hover
+// Refactored to use Button for stable hover 重构使用Button实现稳定hover
 Item {
     id: control
     

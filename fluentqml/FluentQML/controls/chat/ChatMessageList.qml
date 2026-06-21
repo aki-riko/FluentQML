@@ -4,7 +4,7 @@
 
 import "../../.."
 import "."
-import "../containers/FluentScrollBar"
+import "../containers/ScrollBar"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖
 
 /**

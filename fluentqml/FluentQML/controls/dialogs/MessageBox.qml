@@ -5,7 +5,7 @@
 import QtQuick
 import "../.."
 import "../data"
-import "../buttons/FluentButton"
+import "../buttons/Button"
 
 // MessageBox - Message dialog with title and content 带标题和内容的消息对话框
 DialogBoxCore {

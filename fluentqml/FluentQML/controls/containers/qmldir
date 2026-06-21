@@ -33,8 +33,8 @@ RowFit Layout/RowFit.qml
 SplitPane Layout/SplitPane.qml
 
 # ScrollBar 滚动条
-ScrollBarEntry FluentScrollBar/ScrollBarEntry.qml
-ScrollBar FluentScrollBar/ScrollBar.qml
+ScrollBarEntry ScrollBar/ScrollBarEntry.qml
+ScrollBar ScrollBar/ScrollBar.qml
 ScrollArea ScrollArea.qml
 Flickable Flickable.qml
 

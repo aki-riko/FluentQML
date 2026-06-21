@@ -8,7 +8,7 @@ import QtQuick.Layouts
 import "../.."
 import "../../effects"
 import "../data"
-import "../containers/FluentScrollBar"
+import "../containers/ScrollBar"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖
 
 // DataWidgetCore - Base class for ListWidget/TableWidget 数据组件基类

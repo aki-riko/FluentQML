@@ -4,10 +4,10 @@
 
 import QtQuick
 import "../../.."
-import "../../buttons/FluentButton"
+import "../../buttons/Button"
 
 // SpinBoxButton - Spin box increment/decrement button 微调框加减按钮
-// Extends ButtonCore with transparent style 继承FluentButtonCore使用透明样式
+// Extends ButtonCore with transparent style 继承ButtonCore使用透明样式
 ButtonCore {
     id: control
     

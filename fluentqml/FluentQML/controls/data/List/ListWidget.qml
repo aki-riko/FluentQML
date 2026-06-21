@@ -3,7 +3,7 @@
 // This file is part of FluentQML, licensed under MIT.
 
 import "../../.."
-import "../../../controls/containers/FluentScrollBar"
+import "../../../controls/containers/ScrollBar"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖
 
 // ListWidget - Fluent style list widget 列表控件

@@ -24,12 +24,12 @@ CheckIcon controls/icons/CheckIcon.qml
 CloseIcon controls/icons/CloseIcon.qml
 
 # ==================== Buttons 按钮 ====================
-Button controls/buttons/FluentButton/ButtonCore.qml
-ButtonCore controls/buttons/FluentButton/ButtonCore.qml
-CustomButtonCore controls/buttons/FluentButton/CustomButtonCore.qml
-ButtonContent controls/buttons/FluentButton/ButtonContent.qml
-ButtonDropdown controls/buttons/FluentButton/ButtonDropdown.qml
-ButtonProgress controls/buttons/FluentButton/ButtonProgress.qml
+Button controls/buttons/Button/ButtonCore.qml
+ButtonCore controls/buttons/Button/ButtonCore.qml
+CustomButtonCore controls/buttons/Button/CustomButtonCore.qml
+ButtonContent controls/buttons/Button/ButtonContent.qml
+ButtonDropdown controls/buttons/Button/ButtonDropdown.qml
+ButtonProgress controls/buttons/Button/ButtonProgress.qml
 CloseButton controls/buttons/CloseButton.qml
 
 # ==================== Containers 容器 ====================
@@ -63,8 +63,8 @@ SplitPane controls/containers/Layout/SplitPane.qml
 #SplitView controls/containers/Layout/SplitView.qml
 
 # ScrollBar 滚动条
-ScrollBarEntry controls/containers/FluentScrollBar/ScrollBarEntry.qml
-ScrollBar controls/containers/FluentScrollBar/ScrollBar.qml
+ScrollBarEntry controls/containers/ScrollBar/ScrollBarEntry.qml
+ScrollBar controls/containers/ScrollBar/ScrollBar.qml
 ScrollArea controls/containers/ScrollArea.qml
 #Flickable controls/containers/Flickable.qml
 

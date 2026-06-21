@@ -8,7 +8,7 @@ import "../icons"
 import "../buttons"
 import "../../effects"
 import "../data"
-import "../containers/FluentScrollBar"
+import "../containers/ScrollBar"
 import "../containers"
 import "_internal"
 import QtQuick.Effects

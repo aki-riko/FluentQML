@@ -3,7 +3,7 @@
 // This file is part of FluentQML, licensed under MIT.
 
 import "../.."
-import "../containers/FluentScrollBar"
+import "../containers/ScrollBar"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖
 
 // HorizontalScrollMixin - 横向滚动 mixin

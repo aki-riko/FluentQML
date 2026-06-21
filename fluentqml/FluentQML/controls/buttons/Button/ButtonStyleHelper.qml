@@ -6,7 +6,7 @@ import QtQuick
 import "../../.."
 
 // ButtonStyleHelper - Button color calculation 按钮颜色计算
-// Extracts complex color logic from ButtonCore 从FluentButtonCore提取复杂颜色逻辑
+// Extracts complex color logic from ButtonCore 从ButtonCore提取复杂颜色逻辑
 QtObject {
     id: helper
     

@@ -9,7 +9,7 @@ import "../../feedback"
 import "../../data"
 
 // ButtonContent - Content area (icon + text + rings) 内容区域
-// Internal module for Button FluentButton内部模块
+// Internal module for Button Button内部模块
 Row {
     id: content
     

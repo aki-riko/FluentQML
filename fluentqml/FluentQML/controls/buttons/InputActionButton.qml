@@ -4,7 +4,7 @@
 
 import QtQuick
 import "../.."
-import "FluentButton"
+import "Button"
 
 // InputActionButton - Action button for input fields 输入框操作按钮
 // Used for password toggle, search, etc. 用于密码切换、搜索等

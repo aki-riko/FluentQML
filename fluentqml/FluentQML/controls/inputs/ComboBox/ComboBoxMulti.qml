@@ -9,7 +9,7 @@ import "../../utils"
 import "../../../effects"
 import "../../data"
 import ".."
-import "../../containers/FluentScrollBar"
+import "../../containers/ScrollBar"
 import "../../inputs/Toggle"
 import "_internal"
 

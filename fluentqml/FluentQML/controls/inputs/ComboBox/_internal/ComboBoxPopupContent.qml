@@ -4,7 +4,7 @@
 
 import "../../../.."
 import "../../../containers"
-import "../../../containers/FluentScrollBar"
+import "../../../containers/ScrollBar"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖
 
 // ComboBoxPopupContent - Default popup content for ComboBox ComboBox默认弹出内容

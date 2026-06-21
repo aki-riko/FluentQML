@@ -4,10 +4,10 @@
 
 import QtQuick
 import "../../../.."
-import "../../../buttons/FluentButton"
+import "../../../buttons/Button"
 
 // ColorPickerTrigger - Dropdown trigger button 下拉触发按钮
-// Uses ButtonCore with feature_dropdown 使用FluentButtonCore的dropdown功能
+// Uses ButtonCore with feature_dropdown 使用ButtonCore的dropdown功能
 Item {
     id: control
     

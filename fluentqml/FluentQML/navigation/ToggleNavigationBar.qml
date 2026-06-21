@@ -4,7 +4,7 @@
 
 import QtQuick
 import ".."
-import "../controls/buttons/FluentButton"
+import "../controls/buttons/Button"
 import "../controls/icons"
 import "../controls/data/Label"
 import "../controls/navigation/_internal"

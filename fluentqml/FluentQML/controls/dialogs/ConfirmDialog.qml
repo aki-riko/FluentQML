@@ -5,7 +5,7 @@
 import QtQuick
 import QtQuick.Layouts
 import "../.."
-import "../buttons/FluentButton"
+import "../buttons/Button"
 import "../data/Label"
 import "../icons"
 

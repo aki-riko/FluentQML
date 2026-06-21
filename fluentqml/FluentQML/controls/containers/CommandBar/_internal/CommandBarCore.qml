@@ -11,7 +11,7 @@ import "../../../containers/Separator"
 import "../../../data"     // → controls/data/
 
 // CommandBarCore - Base class for command bar 命令栏基类
-// Refactored to use Button for stable hover 重构使用FluentButton实现稳定hover
+// Refactored to use Button for stable hover 重构使用Button实现稳定hover
 Item {
     id: control
     

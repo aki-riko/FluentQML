@@ -332,7 +332,7 @@ Widget {
     }
     
     // ==================== Progress Bar 进度条（使用现有ProgressBar组件） ====================
-    // Progress bar container: ref Button rounded clip solution 进度条容器：参考FluentButton的圆角裁剪方案
+    // Progress bar container: ref Button rounded clip solution 进度条容器：参考Button的圆角裁剪方案
 
     Item {
         id: progressClipRect

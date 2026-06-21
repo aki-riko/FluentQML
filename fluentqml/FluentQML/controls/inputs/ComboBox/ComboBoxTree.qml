@@ -8,7 +8,7 @@ import "../../icons"
 import "../../utils"
 import ".."
 import "../../containers"
-import "../../containers/FluentScrollBar"
+import "../../containers/ScrollBar"
 import "../../menus"
 import "_internal"
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖

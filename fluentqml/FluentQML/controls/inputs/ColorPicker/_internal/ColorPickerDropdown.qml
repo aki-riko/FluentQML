@@ -5,7 +5,7 @@
 import QtQuick
 import "../../../.."
 import "../../../icons"
-import "../../../buttons/FluentButton"
+import "../../../buttons/Button"
 import "../../../data"
 
 // ColorPickerDropdown - Full dropdown picker content 完整下拉选择器内容

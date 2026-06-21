@@ -6,7 +6,7 @@ import QtQuick
 import ".."
 
 // ContentFrame - Reusable content area with rounded corner and border 可复用的圆角边框内容区域
-// Used by Window and compact-nav window 用于FluentWindow和compact-nav window
+// Used by Window and compact-nav window 用于 Window 和 compact-nav window
 Item {
     id: root
     

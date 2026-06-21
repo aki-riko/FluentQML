@@ -5,7 +5,7 @@
 import QtQuick
 import QtQuick.Layouts
 import "../.."
-import "FluentScrollBar"
+import "ScrollBar"
 
 // ScrollArea - Unified scroll area with virtualization support 统一滚动区域
 // Control via type property: default/list/grid 通过type属性控制模式

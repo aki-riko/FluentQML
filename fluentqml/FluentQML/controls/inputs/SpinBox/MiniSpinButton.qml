@@ -4,10 +4,10 @@
 
 import QtQuick
 import "../../.."
-import "../../buttons/FluentButton"
+import "../../buttons/Button"
 
 // MiniSpinButton - Small spin box up/down button 小型微调框上下按钮
-// Extends ButtonCore with transparent style 继承FluentButtonCore使用透明样式
+// Extends ButtonCore with transparent style 继承ButtonCore使用透明样式
 ButtonCore {
     id: control
     

@@ -7,11 +7,11 @@ import "../../.."
 import "../../menus"
 import "../../utils"
 import "../../icons"
-import "../../containers/FluentScrollBar"
+import "../../containers/ScrollBar"
 import "../../containers/Separator"
 
 // ButtonDropdown - Dropdown menu and split button features 下拉菜单功能
-// Internal module for Button FluentButton内部模块
+// Internal module for Button Button内部模块
 Item {
     id: dropdownFeature
     

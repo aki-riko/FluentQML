@@ -4,7 +4,7 @@
 
 import QtQuick
 import "../.."
-import "FluentButton"
+import "Button"
 
 // SearchButton - Simple search icon button 简单的搜索图标按钮
 ButtonCore {

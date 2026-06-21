@@ -10,7 +10,7 @@ import "../data"
 
 // MenuBar - Fluent Design menu bar 菜单栏
 // Features: hover expand, smooth animation, custom Menu popup
-// Refactored to use Button for stable hover 重构使用FluentButton实现稳定hover
+// Refactored to use Button for stable hover 重构使用Button实现稳定hover
 Rectangle {
     id: control
     

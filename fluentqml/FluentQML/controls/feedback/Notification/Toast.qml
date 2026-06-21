@@ -296,7 +296,7 @@ Widget {
                 onClicked: control.hide()
             }
             
-            // ==================== Progress Bar 进度条（参考FluentButton圆角裁剪方案） ====================
+            // ==================== Progress Bar 进度条（参考Button圆角裁剪方案） ====================
             Item {
                 id: toastProgressClipRect
                 anchors.fill: parent

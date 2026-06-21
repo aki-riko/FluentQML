@@ -7,7 +7,7 @@ import "../../.."
 import "../../feedback/Progress/_internal"
 
 // ButtonProgress - Progress bar features 进度条功能
-// Internal module for Button FluentButton内部模块
+// Internal module for Button Button内部模块
 Item {
     id: progressFeature
     

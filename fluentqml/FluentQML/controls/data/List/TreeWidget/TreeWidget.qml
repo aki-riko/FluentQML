@@ -10,7 +10,7 @@ import "../../../icons"
 import "../../../inputs/Toggle"
 import "../../../data"
 import "../.."
-import "../../../containers/FluentScrollBar"
+import "../../../containers/ScrollBar"
 import "../../../containers/Separator"
 import "_internal"
 import "TreeWidgetCore.js" as Core

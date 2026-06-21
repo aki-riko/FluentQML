@@ -7,7 +7,7 @@ import "../../../.."
 import "../../../buttons"
 
 // DateTimeButtons - Button area for DateTimePicker popup 日期时间选择器弹窗按钮区域
-// Uses Button for consistent styling 使用FluentButton保持样式一致
+// Uses Button for consistent styling 使用Button保持样式一致
 Item {
     id: buttonArea
     

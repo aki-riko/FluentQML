@@ -5,7 +5,7 @@
 import QtQuick
 import "../.."
 import "../utils"
-import "../containers/FluentScrollBar"
+import "../containers/ScrollBar"
 import "." // For MenuSeparator, Action 引入同目录组件
 
 // MenuCore - Menu base class (Qt-style, children only) 菜单基类

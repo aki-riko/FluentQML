@@ -4,7 +4,7 @@
 
 import QtQuick
 
-// FluentIcons - Fluent UI icon enum 图标枚举
+// Icons - Fluent UI icon enum 图标枚举
 // Auto-generated from SVG folder, do not edit manually! 自动生成，请勿手动编辑！
 // Total icons: 2484 图标总数
 // Usage: Enums.icon.chevron_up 使用方式

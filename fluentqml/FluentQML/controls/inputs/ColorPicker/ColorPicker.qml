@@ -5,7 +5,7 @@
 import "../../.."
 import "_internal"
 import "../../utils"
-import "../../buttons/FluentButton"
+import "../../buttons/Button"
 import "../../icons"
 import QtQuick.Window  // 置于库import后:原生Window名归库后不被覆盖
 import QtQuick  // 置于库import后:去前缀后保原生类型不被库覆盖

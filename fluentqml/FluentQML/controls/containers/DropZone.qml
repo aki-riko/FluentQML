@@ -6,7 +6,7 @@ import QtQuick
 import QtQuick.Dialogs
 import "../.."
 import "../icons"
-import "../buttons/FluentButton"
+import "../buttons/Button"
 import "../data/Label"
 
 // DropZone - Drop file widget like Fluent Design 拖放文件组件

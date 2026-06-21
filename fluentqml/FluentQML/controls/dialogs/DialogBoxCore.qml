@@ -6,7 +6,7 @@ import QtQuick
 import QtQuick.Effects
 import "../.."
 import "../../effects"
-import "../buttons/FluentButton"
+import "../buttons/Button"
 
 // DialogBoxCore - Customizable dialog box base class 可定制对话框基类
 OverlayDialogCore {
