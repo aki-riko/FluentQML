@@ -7,6 +7,8 @@ fluentqml/python/core/icons.py linguist-generated=true
 *.js  text eol=lf
 *.json text eol=lf
 *.md  text eol=lf
+*.toml text eol=lf
+qmldir text eol=lf
 
 # 二进制资源(防止行尾规范化破坏 + GitHub 语言统计排除)
 *.rcc binary
