@@ -352,8 +352,15 @@ Item {
                     loaders[index] = sourceLoader
                     control._loaders = loaders
                 }
-                
-                onLoaded: control.pageLoaded(index)
+
+                // latch on actual load completion 加载完成即合锁。
+                // 初始当前页(主页)启动时 active 默认即 true, 绑定算出 true 但值未发生
+                // 变化 → onActiveChanged 不触发 → _loadOnce 漏锁 → 切走被卸载、切回重新
+                // 懒加载。onLoaded 是"已加载"的权威信号, 主页启动会触发, 在此补锁兜底。
+                onLoaded: {
+                    _loadOnce = true
+                    control.pageLoaded(index)
+                }
             }
         }
     }
