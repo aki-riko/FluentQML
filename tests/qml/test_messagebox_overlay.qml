@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Window
 import FluentQML
 import "../../fluentqml/FluentQML/controls/dialogs"
-import "../../fluentqml/FluentQML/controls/buttons/FluentButton"
+import "../../fluentqml/FluentQML/controls/buttons/Button"
 import "../../fluentqml/FluentQML/controls/data"
 
 // Test: MessageBox inside a component should overlay entire window

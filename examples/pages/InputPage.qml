@@ -11,7 +11,7 @@ import "../../fluentqml/FluentQML/controls/buttons"
 import "../../fluentqml/FluentQML/controls/inputs"
 import "../../fluentqml/FluentQML/controls/inputs/ColorPicker/_internal"
 import "../../fluentqml/FluentQML/controls/containers"
-import "../../fluentqml/FluentQML/controls/containers/FluentScrollBar"
+import "../../fluentqml/FluentQML/controls/containers/ScrollBar"
 import "../../fluentqml/FluentQML/controls/data"
 
 // 输入组件展示页面
