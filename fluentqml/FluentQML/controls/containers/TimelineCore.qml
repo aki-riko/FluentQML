@@ -334,6 +334,7 @@ Item {
         clip: true
         cacheBuffer: 600
         reuseItems: true   // 复用 delegate,滚动时不重复实例化(大列表性能关键)
+        interactive: false // 关原生 flick,交给 SmoothScrollHelper 接管(否则平滑滚动不生效)
         boundsBehavior: Flickable.StopAtBounds
         onContentYChanged: {
             if (contentHeight > height && contentY + height >= contentHeight - 600)
@@ -395,22 +396,18 @@ Item {
                     height: parent.height
                     color: Enums.stateColor.borderSubtle
                 }
-                Rectangle {
+                Card {
                     id: cardBox
                     x: Enums.spacing.timelineIndent
                     width: parent.width - Enums.spacing.timelineIndent - Enums.spacing.s
                     height: cardCol.implicitHeight + Enums.spacing.l * 2
-                    radius: Enums.radius.medium
-                    // 轻量卡片(无阴影,适合大列表虚拟滚动):hover 变色 + 选中高亮
-                    color: cardHover.hovered ? Enums.stateColor.hover : Enums.cardColor
+                    cardType: Enums.card.type_hover
+                    clickEnabled: true
                     border.width: cardPart.isSelected ? Enums.border.thick : Enums.border.normal
                     border.color: cardPart.isSelected ? Enums.accentColor : Enums.stateColor.border
-                    HoverHandler { id: cardHover }
-                    TapHandler {
-                        onTapped: {
-                            control.cardClicked(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.text)
-                            control.cardClickedData(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.cardData)
-                        }
+                    onClicked: {
+                        control.cardClicked(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.text)
+                        control.cardClickedData(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.cardData)
                     }
                     Column {
                         id: cardCol
