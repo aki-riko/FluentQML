@@ -84,6 +84,51 @@ WindowsCore {
     signal bottomItemClicked(int index)
     signal currentPageChanged(int index)
 
+    // ==================== Splash 关闭时机 ====================
+    // 关闭欢迎页必须等"主页(首屏 currentIndex 那一页)真正加载完成",
+    // 而非外层框架壳 onLoaded 就关 —— 懒加载/异步模式下框架 ready 时
+    // 主页内容仍在异步加载, 过早关 splash 会露出空白再浮现主页。
+    property bool _splashDismissed: false
+
+    function _dismissSplashWhenReady(stack) {
+        if (_splashDismissed) return
+        if (!_splashInstance) { _splashDismissed = true; return }
+
+        // 主页此刻已就绪(同步/直接 children 模式, 或加载够快) → 立即关
+        if (!stack || stack._isPageLoaded(stack.currentIndex)) {
+            _doDismissSplash()
+            return
+        }
+
+        // 否则等主页那一页的 pageLoaded 信号; 超时兜底防信号意外不来卡死
+        var target = stack.currentIndex
+        function onPageLoaded(idx) {
+            if (idx !== target) return
+            stack.pageLoaded.disconnect(onPageLoaded)
+            _splashTimeoutTimer.stop()
+            _doDismissSplash()
+        }
+        stack.pageLoaded.connect(onPageLoaded)
+        _splashTimeoutTimer._onTimeout = function() {
+            stack.pageLoaded.disconnect(onPageLoaded)
+            _doDismissSplash()
+        }
+        _splashTimeoutTimer.restart()
+    }
+
+    function _doDismissSplash() {
+        if (_splashDismissed) return
+        _splashDismissed = true
+        if (_splashInstance) _splashInstance.finish()
+    }
+
+    Timer {
+        id: _splashTimeoutTimer
+        interval: Enums.duration.splashTimeout
+        property var _onTimeout: null
+        onTriggered: if (_onTimeout) _onTimeout()
+    }
+
     // ==================== Public Methods 公开方法 ====================
     function addPage(page, icon, text, selectedIcon, position, parent, isTransparent) {
         var pos = position || "top"

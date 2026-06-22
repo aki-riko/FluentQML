@@ -31,6 +31,7 @@ QtObject {
  readonly property int slower: 300
  readonly property int page: 320 // Page transition 页面切换
  readonly property int dialog: 400
+ readonly property int splashTimeout: 5000 // Splash dismiss fallback when first page never signals loaded 首屏加载信号意外不来时关闭欢迎页的兜底超时
  readonly property int scroll: 750
  readonly property int bounce: 750 // Scroll bounce animation 滚动回弹动画
  // Data component animation durations 数据组件动画时长

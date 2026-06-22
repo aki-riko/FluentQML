@@ -87,8 +87,8 @@ NavigationWindowCore {
  }
  }
  
- // 内容加载完毕，关闭启动屏幕
- if (window._splashInstance) window._splashInstance.finish()
+ // 等主页(首屏)真正加载完成再关欢迎页, 而非框架壳加载完就关
+ window._dismissSplashWhenReady(window.stackedWidget)
  }
  }
  
