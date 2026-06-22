@@ -17,8 +17,10 @@
 ## 📦 安装
 
 ```bash
-pip install fluentqml
+pip install fqml
 ```
+
+> 注:PyPI 包名为 `fqml`(`fluentqml` 已被占用),但导入名仍是 `fluentqml`(`from fluentqml import ...`)。
 
 开发模式安装：
 
