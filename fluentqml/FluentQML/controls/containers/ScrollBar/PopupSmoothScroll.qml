@@ -19,7 +19,6 @@ Item {
     required property Flickable flickable  // Parent flickable/listview 父级Flickable
     
     // ==================== Config Props 配置属性 ====================
-    property bool enabled: true
     property int duration: Enums.duration.scroll
     property real step: Enums.spacing.xxxl * 2  // Smaller step for popup 弹窗较小步长
     property int easing: Easing.OutCubic

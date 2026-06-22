@@ -17,7 +17,6 @@ Item {
     property string text: ""
     property string icon: ""
     property bool selected: false
-    property bool enabled: true
     property bool compact: false  // Compact mode (icon only) 紧凑模式
     property bool selectable: true  // Whether item can be selected 是否可选中
     

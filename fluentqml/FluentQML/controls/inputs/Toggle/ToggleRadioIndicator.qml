@@ -12,7 +12,6 @@ Rectangle {
 
     // ==================== Props 属性 ====================
     property bool checked: false
-    property bool enabled: true
     property bool hovered: false
     property bool pressed: false
 

@@ -12,7 +12,6 @@ Item {
     
     // ==================== Properties 属性 ====================
     property real value: Enums.colorPickerMetrics.hueValueDefault         // 0-1, maps to hue 0-360°
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal valueModified(real newValue)

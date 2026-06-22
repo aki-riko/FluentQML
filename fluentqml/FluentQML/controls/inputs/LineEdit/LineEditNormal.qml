@@ -29,7 +29,7 @@ Item {
     required property bool collapsible
     required property int collapsedWidth
     required property int expandedWidth
-    required property bool enabled
+    required property bool controlEnabled
     
     // Padding from InputCore 从基类继承的边距
     required property int paddingLeft
@@ -135,7 +135,7 @@ Item {
         // 等任何 QValidator 子类。null 表示无过滤。
         validator: normalInput.validator
         inputMethodHints: normalInput.inputMethodHints
-        enabled: normalInput.enabled
+        enabled: normalInput.controlEnabled
         
         onTextEdited: normalInput.textEdited(text)
         onAccepted: {

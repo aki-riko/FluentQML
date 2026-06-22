@@ -14,7 +14,6 @@ Item {
     // ==================== Properties 属性 ====================
     property color selectedColor: Enums.colorPickerDefaults.defaultColor
     property bool isOpen: false
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal clicked()

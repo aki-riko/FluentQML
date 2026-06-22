@@ -14,7 +14,6 @@ Item {
     property real hue: Enums.colorPickerMetrics.dialogHueDefault           // Current hue 当前色相
     property real saturation: Enums.colorPickerMetrics.dialogSaturationDefault    // Current saturation 当前饱和度
     property real value: Enums.colorPickerMetrics.brightnessValueDefault         // 0-1, brightness value 亮度值
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal valueModified(real newValue)

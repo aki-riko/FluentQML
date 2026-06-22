@@ -17,7 +17,6 @@ Item {
     property color selectedColor: Enums.accentColor
     property int colorMode: Enums.colorPicker.mode_rgb
     property bool enableAlpha: true
-    property bool enabled: true
     
     // ==================== Internal HSV 内部HSV ====================
     property real _hue: Enums.colorPickerMetrics.dialogHueDefault

@@ -19,7 +19,7 @@ Item {
     required property bool isToolButton
     required property int feature
     required property var menuItems
-    required property bool enabled
+    required property bool controlEnabled
     required property bool loading
     required property real parentRadius
     required property string fontFamily
@@ -62,7 +62,7 @@ Item {
     
     // Arrow color based on parent style 箭头颜色
     readonly property color _arrowColor: {
-        if (!dropdownFeature.enabled) return Enums.stateColor.indicatorActive
+        if (!dropdownFeature.controlEnabled) return Enums.stateColor.indicatorActive
         if (_useAccentForeground) return Enums.accentForeground
         return Enums.textColor.secondary
     }
@@ -173,7 +173,7 @@ Item {
             id: splitDropMouse
             anchors.fill: parent
             hoverEnabled: true
-            enabled: dropdownFeature.enabled && !dropdownFeature.loading
+            enabled: dropdownFeature.controlEnabled && !dropdownFeature.loading
             onClicked: dropdownFeature.openMenu()
         }
     }
@@ -183,7 +183,7 @@ Item {
         id: splitMainMouse
         anchors.fill: splitMainArea
         hoverEnabled: true
-        enabled: dropdownFeature.enabled && !dropdownFeature.loading && feature === Enums.button.feature_split
+        enabled: dropdownFeature.controlEnabled && !dropdownFeature.loading && feature === Enums.button.feature_split
         visible: feature === Enums.button.feature_split
         onClicked: dropdownFeature.mainButtonClicked()
     }

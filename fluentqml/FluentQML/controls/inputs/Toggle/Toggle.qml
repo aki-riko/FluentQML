@@ -29,7 +29,6 @@ Item {
     property string icon: ""
     property int iconSize: Enums.iconSize.m
     property bool checked: false
-    property bool enabled: true
 
     // CheckBox specific CheckBox专用
     property bool tristate: false

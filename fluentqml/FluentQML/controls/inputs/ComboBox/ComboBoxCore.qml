@@ -26,7 +26,6 @@ Widget {
     property int currentIndex: -1
     property string currentText: currentIndex >= 0 && currentIndex < model.length ? _getItemText(currentIndex) : ""
     property string placeholderText: "Select"
-    property bool enabled: true
     property bool editable: false
     property bool useDefaultContent: true
     property int style: 0  // 0 = style_default

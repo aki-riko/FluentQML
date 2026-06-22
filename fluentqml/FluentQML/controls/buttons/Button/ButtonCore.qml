@@ -51,7 +51,6 @@ Widget {
     property bool dropdownOpen: false  // External dropdown open state 外部下拉打开状态
 
     // ==================== Base Props 基础属性 ====================
-    property bool enabled: true
     property bool flat: style === Enums.button.style_transparent ||
                         style === Enums.button.style_text ||
                         style === Enums.button.style_hyperlink
@@ -80,7 +79,7 @@ Widget {
         style: control.style
         feature: control.feature
         level: control.level
-        enabled: control.enabled
+        controlEnabled: control.enabled
         loading: control.loading
         countdownActive: control._countdownActive
         hovered: control.hovered
@@ -344,7 +343,7 @@ Widget {
             loadingText: control.loadingText
             progress: control.progress
             textColor: control.getTextColor()
-            enabled: control.enabled
+            controlEnabled: control.enabled
             fontFamily: control.fontFamily
             fontSize: control.fontSize
             fontBold: control.fontBold
@@ -464,7 +463,7 @@ Widget {
             isToolButton: control.isToolButton
             feature: control.feature
             menuItems: control.menuItems
-            enabled: control.enabled
+            controlEnabled: control.enabled
             loading: control.loading
             parentRadius: control.radius
             fontFamily: control.fontFamily

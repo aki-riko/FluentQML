@@ -15,7 +15,6 @@ Item {
     property color selectedColor: Enums.accentColor
     property int colorMode: Enums.colorPicker.mode_rgb  // RGB/HSV/HSL
     property bool showModeSelector: true
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal colorChanged(color newColor)

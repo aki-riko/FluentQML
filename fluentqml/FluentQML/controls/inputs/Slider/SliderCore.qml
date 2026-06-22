@@ -21,7 +21,6 @@ Item {
     property real to: 100
     property real stepSize: 1
     property int orientation: Qt.Horizontal
-    property bool enabled: true
     // snapMode: 0=NoSnap (自由拖,可停在任意位置)
     //          1=SnapOnRelease (拖动时自由,松手吸附到 step)
     //          2=SnapAlways (默认,实时吸附到 step,与 stepSize 配合用)

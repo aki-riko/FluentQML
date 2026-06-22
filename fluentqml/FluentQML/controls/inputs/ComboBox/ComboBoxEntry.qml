@@ -30,7 +30,6 @@ Item {
     property int currentIndex: 0
     property string currentText: ""
     property string placeholderText: ""
-    property bool enabled: true
     property bool _syncing: false  // 防止同步循环
     // 异步加载内部 ComboBox*.qml — 大列表 delegate 场景 (一屏 30+ ComboBox) 打开,
     // 让首次滚动不被同步实例化阻塞; 单个独立 ComboBox 用法默认同步 (避免首帧空)

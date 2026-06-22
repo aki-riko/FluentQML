@@ -17,7 +17,6 @@ Item {
     property int length: 6
     property string value: ""
     property bool password: true
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal completed(string pin)

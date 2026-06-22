@@ -14,7 +14,6 @@ Item {
     property real hue: 0.5           // 0-1, maps to 0-360°
     property real saturation: 1.0    // 0-1, top=1, bottom=0
     property real brightness: 1.0    // For brightness adjustment 亮度调整
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal colorChanged(real h, real s)

@@ -17,7 +17,6 @@ Rectangle {
     property string text: ""
     property string icon: ""
     property string shortcut: ""
-    property bool enabled: true
     property bool checkable: false
     property bool checked: false
     property int textPosition: Enums.position.side  // side or bottom 侧边或底部

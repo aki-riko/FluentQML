@@ -201,7 +201,7 @@ InputCore {
             collapsible: control.collapsible
             collapsedWidth: control.collapsedWidth
             expandedWidth: control.expandedWidth
-            enabled: control.enabled
+            controlEnabled: control.enabled
             paddingLeft: control.paddingLeft
             paddingRight: control.paddingRight
             fontFamily: control.fontFamily
@@ -225,7 +225,7 @@ InputCore {
         LineEditLabel {
             label: control.label
             placeholderText: control.placeholderText
-            enabled: control.enabled
+            controlEnabled: control.enabled
             paddingLeft: control.paddingLeft
             paddingRight: control.paddingRight
             fontFamily: control.fontFamily

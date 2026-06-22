@@ -18,7 +18,6 @@ Item {
     property string icon: ""
     property string selectedIcon: ""
     property bool selected: false
-    property bool enabled: true
     property bool selectable: true
     
     signal clicked()

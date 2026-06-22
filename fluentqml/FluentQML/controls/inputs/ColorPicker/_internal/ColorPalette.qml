@@ -20,7 +20,6 @@ Item {
     property string themeColorsText: "Theme Colors"
     property string standardColorsText: "Standard Colors"
     property string moreColorsText: "More Colors..."
-    property bool enabled: true
     
     // Theme colors (10 columns x 6 rows) 主题色
     property var themeColors: Enums.colorPalette.themeColors

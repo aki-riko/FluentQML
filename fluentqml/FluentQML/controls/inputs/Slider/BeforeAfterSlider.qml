@@ -17,7 +17,6 @@ Item {
     property url leftImage: ""
     property url rightImage: ""
     property real position: 0.5  // 0-1
-    property bool enabled: true
     property int radius: Enums.radius.large  // Corner radius 圆角
     
     signal positionModified(real newPosition)

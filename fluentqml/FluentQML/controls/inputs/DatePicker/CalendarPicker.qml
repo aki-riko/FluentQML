@@ -33,7 +33,6 @@ Rectangle {
     property bool hasRange: false
     property bool _selectingStart: true  // Internal: selecting start or end 内部：选择开始还是结束
     
-    property bool enabled: true
     property bool isOpen: false
     property color accentColor: Enums.accentColor
     

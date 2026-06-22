@@ -12,7 +12,6 @@ Rectangle {
 
     // ==================== Props 属性 ====================
     property bool checked: false
-    property bool enabled: true
     property color checkedColor: Enums.accentColor
 
     // ==================== Signals 信号 ====================

@@ -21,7 +21,6 @@ Rectangle {
     property int currentIndex: 0  // Current selected index (exclusive mode) 当前选中索引（互斥模式）
     property bool exclusive: true  // true=单选, false=多选
     property var selectedIndices: [0]  // Selected indexes (multi-select mode) 选中索引（多选模式）
-    property bool enabled: true
     property int iconSize: Enums.iconSize.s  // Icon size for filter items 过滤项图标尺寸
     
     // ==================== Signals 信号 ====================

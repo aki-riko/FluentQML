@@ -15,7 +15,7 @@ Item {
     // ==================== Required Props 必需属性 ====================
     required property string label
     required property string placeholderText
-    required property bool enabled
+    required property bool controlEnabled
     
     // Padding from InputCore 从基类继承的边距
     required property int paddingLeft
@@ -72,7 +72,7 @@ Item {
         font.family: labelInput.fontFamily
         font.pixelSize: labelInput.fontSize
         color: Enums.textColor.primary
-        enabled: labelInput.enabled
+        enabled: labelInput.controlEnabled
         clip: true
         verticalAlignment: Text.AlignVCenter
         selectByMouse: true

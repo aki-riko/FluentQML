@@ -24,7 +24,6 @@ Item {
     property color selectedColor: Enums.colorPickerDefaults.defaultColor
     property color defaultColor: Enums.colorPickerDefaults.defaultColor
     property bool enableAlpha: true
-    property bool enabled: true
     
     // ==================== Circle Type Props 圆形类型属性 ====================
     property var circleColors: Enums.colorPickerDefaults.quickPalette

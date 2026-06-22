@@ -17,7 +17,6 @@ MessageBox {
     property string title: qsTr("Choose Background Color")
     property string editColorText: qsTr("Custom Color")
     property bool enableAlpha: false
-    property bool enabled: true
     
     // ==================== Internal HSV State 内部HSV状态 ====================
     property real _hue: Enums.colorPickerMetrics.dialogHueDefault

@@ -16,7 +16,6 @@ Item {
     property int mode: Enums.gradientSlider.mode_hue
     property real value: 0  // 0-1
     property color baseColor: Enums.colorPickerDefaults.baseRed
-    property bool enabled: true
     
     signal valueModified(real newValue)
     

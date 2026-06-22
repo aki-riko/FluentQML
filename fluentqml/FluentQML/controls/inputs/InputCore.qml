@@ -25,7 +25,6 @@ Widget {
     }
     
     // ==================== Base Props 基础属性 ====================
-    property bool enabled: true
     
     // ==================== Focus Line 聚焦底线 ====================
     property bool showFocusedBorder: true

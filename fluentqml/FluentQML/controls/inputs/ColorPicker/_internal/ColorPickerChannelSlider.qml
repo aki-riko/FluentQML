@@ -16,7 +16,6 @@ Item {
     property int channel: 0          // 0=R, 1=G, 2=B, 3=A
     property int value: 0            // 0-255
     property color baseColor: Enums.colorPalette.automaticColor  // Current color (for gradient calculation)
-    property bool enabled: true
     property bool showInput: true    // Show input field 显示输入框
     
     // ==================== Signals 信号 ====================

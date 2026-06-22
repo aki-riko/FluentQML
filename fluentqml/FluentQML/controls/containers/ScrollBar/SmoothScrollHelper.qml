@@ -16,7 +16,6 @@ Item {
     required property Flickable target  // Target view (ListView/GridView/Flickable) 目标视图
     
     // ==================== Config Props 配置属性 ====================
-    property bool enabled: true
     property int orientation: Qt.Vertical  // Qt.Vertical or Qt.Horizontal 滚动方向
     property int duration: Enums.duration.scroll
     property real step: Enums.spacing.xxxl * 3  // Scroll step per wheel tick 每次滚轮滚动距离

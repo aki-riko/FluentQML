@@ -14,7 +14,6 @@ Item {
     property color selectedColor: Enums.colorPickerDefaults.defaultColor
     property var colors: Enums.colorPickerDefaults.quickPalette
     property int circleSize: 20
-    property bool enabled: true
     
     // ==================== Signals 信号 ====================
     signal colorSelected(color value)

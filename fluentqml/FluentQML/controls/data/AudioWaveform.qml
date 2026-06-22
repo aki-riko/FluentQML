@@ -20,7 +20,6 @@ Item {
     property real progress: 0  // Playback progress 0-1 播放进度
     property color progressColor: Enums.accentColorLight
     property color progressColorEnd: Qt.lighter(progressColor, 1.3)
-    property bool enabled: true
     property bool animated: true  // Enable animations 启用动画
     property bool showProgressIndicator: true  // Show progress line 显示进度线
     

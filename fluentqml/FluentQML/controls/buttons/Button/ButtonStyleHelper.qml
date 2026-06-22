@@ -14,15 +14,15 @@ QtObject {
     required property int style
     required property int feature
     required property int level
-    required property bool enabled
+    required property bool controlEnabled
     required property bool loading
     required property bool countdownActive
     required property bool hovered
     required property bool pressed
     required property bool isToggleChecked
-    
+
     // ==================== Computed Props 计算属性 ====================
-    readonly property bool effectiveEnabled: enabled && !loading && !countdownActive
+    readonly property bool effectiveEnabled: controlEnabled && !loading && !countdownActive
     
     // ==================== Background Color 背景色 ====================
     readonly property color bgColor: {

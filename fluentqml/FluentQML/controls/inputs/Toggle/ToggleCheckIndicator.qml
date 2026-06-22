@@ -13,7 +13,6 @@ Rectangle {
 
     // ==================== Props 属性 ====================
     property int checkState: 0  // 0=Unchecked, 1=Partial, 2=Checked
-    property bool enabled: true
     property bool hovered: false
     property bool pressed: false
     property color checkedColor: Enums.accentColor
