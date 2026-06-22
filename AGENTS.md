@@ -375,6 +375,30 @@ property string icon: ""   // Icon text (emoji or char) 图标文本
 
 > **铁律**：v1.0.0 之前禁止保留向后兼容代码。所有废弃的 API、枚举、属性、组件直接删除或重命名，**不保留 deprecated 别名**。发现旧代码直接重构。
 
+### 发布流程（main → tag → GitHub Release）
+
+远程：`github` = `git@github.com:aki-riko/FluentQML.git`（SSH 公钥用于 push）。
+
+1. **改版本号（两处必须同步）**：
+   - `pyproject.toml` 的 `version = "x.y.z"`
+   - `fluentqml/__init__.py` 的 `__version__ = "x.y.z"`（回退值）
+2. **验证**：发布前 headless 跑一遍确认无新增 QML 警告/错误
+   （`QT_QPA_PLATFORM=offscreen` + 加载关键组件，零 `unavailable`/`Duplicate`/属性覆盖警告）。
+3. **提交**：`git add -A && git commit`（commit message 写清修复内容 + 版本号）。
+4. **打 tag + 推送**：
+   ```bash
+   git tag vx.y.z
+   git push github main
+   git push github vx.y.z
+   ```
+5. **建 GitHub Release**：`gh release create vx.y.z --repo aki-riko/FluentQML --title "vx.y.z" --notes "..."`
+
+### 认证注意（🔴 安全）
+
+- `git push` 走 **SSH 公钥**；`gh release` / GitHub API 走 **token**（两套独立，SSH 密钥不能用于 API）。
+- 建 Release 前需 `gh auth login`（浏览器授权，推荐），或设 `GH_TOKEN` 环境变量。
+- **绝不把 PAT / token 明文贴进对话或提交进代码**。token 一旦明文出现即视为泄露，必须立即去 `github.com/settings/tokens` 吊销。临时用 token 只通过环境变量传入：`GH_TOKEN=xxx gh release create ...`。
+
 ---
 
 ## 九、违规检测清单
