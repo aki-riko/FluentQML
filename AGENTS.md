@@ -379,6 +379,14 @@ property string icon: ""   // Icon text (emoji or char) 图标文本
 
 远程：`github` = `git@github.com:aki-riko/FluentQML.git`（SSH 公钥用于 push）。
 
+> 🔴 **双 remote 必须分清**：本仓有两个远程——
+> - `github` → `git@github.com:aki-riko/FluentQML.git`（**真 GitHub，CI/PyPI 发布在这里跑**）
+> - `origin` → `git@git.9li.life:Aquila/FluentQML.git`（自建 gitea，**无 CI**）
+>
+> 默认 `git push`（无 remote 名）走 `origin`（gitea），**不会触发 GitHub Actions**。
+> 发版相关的 commit 和 tag **必须显式 `git push github ...`** 才能触发 CI。
+> 两边都要推时：`git push github main && git push origin main`，tag 同理。
+
 1. **改版本号（两处必须同步）**：
    - `pyproject.toml` 的 `version = "x.y.z"`
    - `fluentqml/__init__.py` 的 `__version__ = "x.y.z"`（回退值）
@@ -398,6 +406,30 @@ property string icon: ""   // Icon text (emoji or char) 图标文本
 - `git push` 走 **SSH 公钥**；`gh release` / GitHub API 走 **token**（两套独立，SSH 密钥不能用于 API）。
 - 建 Release 前需 `gh auth login`（浏览器授权，推荐），或设 `GH_TOKEN` 环境变量。
 - **绝不把 PAT / token 明文贴进对话或提交进代码**。token 一旦明文出现即视为泄露，必须立即去 `github.com/settings/tokens` 吊销。临时用 token 只通过环境变量传入：`GH_TOKEN=xxx gh release create ...`。
+
+### CI 自动发布（🔴 发版靠推 tag，不靠本地打包）
+
+`.github/workflows/release.yml` 是发版的真正执行者，**别在本地手动打包上传**：
+
+- **触发**：推送 `v*` 格式的 tag（如 `v0.2.3`）→ 自动触发。普通 push commit 不触发，`workflow_dispatch` 手动触发只构建不发布。
+- **构建**：三平台（ubuntu / windows / macos-14）用 `cibuildwheel` 构建 abi3 wheel（`CIBW_BUILD=cp39-*` + `CIBW_CONFIG_SETTINGS=--build-option=--py-limited-api=cp39`）+ sdist。
+- **发布**：`publish` job 经 **PyPI Trusted Publishing**（`id-token: write` + `environment: pypi`）自动上传 PyPI，条件 `if: startsWith(github.ref, 'refs/tags/v')`（仅 tag 触发时发布）。
+- **看状态**：`gh run list` / `gh run watch`（需先 `gh auth login`）；或浏览器开 `github.com/aki-riko/FluentQML/actions`。三平台构建 + publish 全绿才算发布成功，几分钟后 `pip install fqml==x.y.z` 能装到即坐实。
+- 本地 `python -m build` 仅用于调试 wheel 标签，**产物不上传**（CI 出的全平台包才是正式产物）。
+
+### abi3 构建配置（🔴 wheel 必须是 cp39-abi3，不能退化）
+
+含 Rust 扩展（`fluentqml_rs`），wheel 必须打成 **`cp39-abi3`**（一个 wheel 兼容 py3.9+），不能退化成 `cp3XX-cp3XX`（绑死单个 Python 版本）。
+
+- **三处配置缺一不可**：
+  1. `rust/Cargo.toml`：`pyo3 = { features = ["abi3-py39"] }`（必要但不充分）
+  2. `pyproject.toml` 的 `[[tool.setuptools-rust.ext-modules]]`：`py-limited-api = "auto"`
+  3. `pyproject.toml` 的 `[tool.distutils.bdist_wheel]`：`py-limited-api = "cp39"` ← **本地 `python -m build` 靠这条才不退化**
+- **机制**：setuptools-rust 的 `"auto"` 会去读 `bdist_wheel.py_limited_api` 选项，缺失则不加 abi3 feature，退化成 cp3XX。CI 通过 `CIBW_CONFIG_SETTINGS` 在命令行传，本地构建则靠 `[tool.distutils.bdist_wheel]` 配置。
+- **判定 wheel 是否真 abi3 的铁证 = 看 wheel 内 `.pyd` 文件名**：
+  - `fluentqml_rs.pyd`（无版本后缀）= abi3 通用 ✅
+  - `fluentqml_rs.cp312-win_amd64.pyd`（带版本后缀）= 绑死单版本 ❌
+  - 别只信 "Successfully built"，它对错误标签照样报成功。
 
 ### 包命名（🔴 分发名 ≠ 导入名）
 
