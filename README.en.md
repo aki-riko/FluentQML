@@ -17,8 +17,10 @@ A Fluent Design component library built on PySide6 + QML, delivering 120fps+ smo
 ## 📦 Installation
 
 ```bash
-pip install fluentqml
+pip install fqml
 ```
+
+> Note: the PyPI package is named `fqml` (`fluentqml` is taken), but the import name is still `fluentqml` (`from fluentqml import ...`).
 
 Development install:
 
