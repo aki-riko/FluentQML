@@ -51,6 +51,42 @@ Item {
         }
         return rows
     }
+
+    // 虚拟模式实际驱动 ListView 的 ListModel(增量同步,避免整体替换导致滚动跳顶)
+    QtQ.ListModel { id: _flatModel }
+
+    // 选中项的 key 值(配合 selectedRole 高亮当前选中卡片);为空不高亮
+    property string selectedRole: "commit"   // card 对象里用作唯一标识的字段名
+    property var selectedKey: undefined        // 当前选中值(与 card[selectedRole] 比对)
+
+    // 把 _flatRows 增量同步到 _flatModel:
+    // - 纯尾部追加(分页常态):只 append 新增行,现有行不动→contentY 不重置
+    // - 其他变化(reset/搜索/切仓库):清空重填
+    function _syncFlat() {
+        if (!virtualized) return
+        var rows = _flatRows
+        var oldN = _flatModel.count
+        var isAppend = rows.length >= oldN && oldN > 0
+        // 校验前缀一致(纯追加的前提:前 oldN 行的 groupIndex/cardIndex/kind 不变)
+        if (isAppend) {
+            // 抽样校验首行+最后一旧行的标识,足以判断是否前缀稳定
+            var f0 = _flatModel.get(0)
+            if (!f0 || f0.kind !== rows[0].kind || f0.title !== (rows[0].title || "")
+                || f0.text !== (rows[0].text || "")) {
+                isAppend = false
+            }
+        }
+        if (isAppend) {
+            for (var i = oldN; i < rows.length; i++) _flatModel.append(rows[i])
+        } else {
+            _flatModel.clear()
+            for (var j = 0; j < rows.length; j++) _flatModel.append(rows[j])
+        }
+    }
+
+    onVirtualizedChanged: _syncFlat()
+    on_FlatRowsChanged: _syncFlat()
+    Component.onCompleted: _syncFlat()
     
     // ==================== Signals 信号 ====================
     signal itemClicked(int groupIndex, string title)
@@ -58,6 +94,8 @@ Item {
     // cardClickedData: 回传完整 card 对象(含调用方自定义字段,如业务 id/hash)
     // cardClickedData: emits the full card object (carrying caller's custom fields, e.g. business id/hash)
     signal cardClickedData(int groupIndex, int cardIndex, var cardData)
+    // 虚拟滚动模式下滚动到接近底部时触发(用于分页加载更多)
+    signal reachedEnd()
     
     implicitWidth: 400
     implicitHeight: virtualized ? 400 : contentColumn.implicitHeight
@@ -291,21 +329,25 @@ Item {
         id: virtualList
         anchors.fill: parent
         visible: control.virtualized
-        model: control.virtualized ? control._flatRows : []
+        model: control.virtualized ? _flatModel : null
         clip: true
         cacheBuffer: 600
         boundsBehavior: Flickable.StopAtBounds
+        onContentYChanged: {
+            if (contentHeight > height && contentY + height >= contentHeight - 600)
+                control.reachedEnd()
+        }
 
         delegate: Item {
             id: rowDelegate
-            required property var modelData
+            required property var model
             width: virtualList.width
-            height: modelData.kind === "header" ? headerPart.height : cardPart.height
+            height: model.kind === "header" ? headerPart.height : cardPart.height
 
             // ---------- 组头行 ----------
             Item {
                 id: headerPart
-                visible: rowDelegate.modelData.kind === "header"
+                visible: rowDelegate.model.kind === "header"
                 width: parent.width
                 height: visible ? Enums.spacing.timelineHeaderHeight + Enums.spacing.s : 0
                 Row {
@@ -317,10 +359,10 @@ Item {
                         height: Enums.controlSize.timelineIcon
                         radius: Enums.controlSize.timelineIcon / 2
                         anchors.verticalCenter: parent.verticalCenter
-                        color: control._getStatusColor(rowDelegate.modelData.status || "info")
+                        color: control._getStatusColor(rowDelegate.model.status || "info")
                         Icon {
                             anchors.centerIn: parent
-                            icon: control._getStatusIcon(rowDelegate.modelData.status || "info")
+                            icon: control._getStatusIcon(rowDelegate.model.status || "info")
                             iconSize: Enums.typography.micro
                             color: Enums.accentForeground
                         }
@@ -328,7 +370,7 @@ Item {
                     Label {
                         type: Enums.label.type_body_strong
                         anchors.verticalCenter: parent.verticalCenter
-                        text: rowDelegate.modelData.title || ""
+                        text: rowDelegate.model.title || ""
                     }
                 }
             }
@@ -336,9 +378,14 @@ Item {
             // ---------- 卡片行 ----------
             Item {
                 id: cardPart
-                visible: rowDelegate.modelData.kind === "card"
+                visible: rowDelegate.model.kind === "card"
                 width: parent.width
                 height: visible ? cardBox.height + Enums.spacing.m : 0
+                // 当前选中高亮判定
+                readonly property bool isSelected: control.selectedKey !== undefined
+                    && !!rowDelegate.model.cardData
+                    && (typeof rowDelegate.model.cardData === "object")
+                    && rowDelegate.model.cardData[control.selectedRole] === control.selectedKey
                 // 左侧连接线
                 Rectangle {
                     x: 7; y: 0
@@ -353,10 +400,11 @@ Item {
                     height: cardCol.implicitHeight + Enums.spacing.l * 2
                     cardType: Enums.card.type_hover
                     clickEnabled: true
+                    border.width: cardPart.isSelected ? Enums.border.thick : Enums.border.normal
+                    border.color: cardPart.isSelected ? Enums.accentColor : Enums.stateColor.border
                     onClicked: {
-                        var d = rowDelegate.modelData
-                        control.cardClicked(d.groupIndex, d.cardIndex, d.text)
-                        control.cardClickedData(d.groupIndex, d.cardIndex, d.cardData)
+                        control.cardClicked(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.text)
+                        control.cardClickedData(rowDelegate.model.groupIndex, rowDelegate.model.cardIndex, rowDelegate.model.cardData)
                     }
                     Column {
                         id: cardCol
@@ -368,16 +416,16 @@ Item {
                         Label {
                             type: Enums.label.type_body
                             width: parent.width
-                            text: rowDelegate.modelData.text || ""
-                            color: (rowDelegate.modelData.strikeOut || false) ? Enums.textColor.secondary : Enums.textColor.primary
+                            text: rowDelegate.model.text || ""
+                            color: (rowDelegate.model.strikeOut || false) ? Enums.textColor.secondary : Enums.textColor.primary
                             wrapMode: Text.Wrap
-                            font.strikeout: rowDelegate.modelData.strikeOut || false
+                            font.strikeout: rowDelegate.model.strikeOut || false
                         }
                         Label {
                             type: Enums.label.type_caption
                             width: parent.width
-                            visible: (rowDelegate.modelData.description || "") !== ""
-                            text: rowDelegate.modelData.description || ""
+                            visible: (rowDelegate.model.description || "") !== ""
+                            text: rowDelegate.model.description || ""
                             color: Enums.textColor.tertiary
                             wrapMode: Text.Wrap
                         }
