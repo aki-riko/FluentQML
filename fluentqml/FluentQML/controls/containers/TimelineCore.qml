@@ -10,6 +10,7 @@ import "../icons"
 import "../../effects"
 import "Card"
 import "../data/Label"
+import "ScrollBar"
 
 // TimelineCore - Timeline widget 时间线组件
 // Supports grouped items with status icons and cards 支持分组项目、状态图标和卡片
@@ -432,6 +433,24 @@ Item {
                     }
                 }
             }
+        }
+
+        // 平滑滚动(滚轮缓动,与其他 Fluent 列表一致)
+        SmoothScrollHelper {
+            id: vScrollHelper
+            target: virtualList
+            orientation: Qt.Vertical
+            handleWheel: true
+        }
+
+        // Fluent 风格滚动条
+        ScrollBar {
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.margins: Enums.spacing.xxs
+            target: virtualList
+            scrollHelper: vScrollHelper
         }
     }
 }
