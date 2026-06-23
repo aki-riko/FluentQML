@@ -24,6 +24,7 @@ OverlayDialogCore {
     property int ringSize: 64
     property int ringStrokeWidth: Enums.controlSize.progressStrokeWidth
     property int maxWaitingTime: -1  // -1 = infinite wait 无限等待
+    property real progress: -1  // -1 = 不确定(转圈), 0~100 = 确定进度百分比
     
     // ==================== Signals 信号 ====================
     signal timeout()
@@ -81,7 +82,11 @@ OverlayDialogCore {
                 width: control.ringSize
                 height: control.ringSize
                 strokeWidth: control.ringStrokeWidth
-                indeterminate: true
+                // progress < 0 时不确定(转圈), 否则按 0~100 显示确定进度
+                indeterminate: control.progress < 0
+                value: control.progress < 0 ? 0 : control.progress
+                from: 0
+                to: 100
                 anchors.verticalCenter: parent.verticalCenter
             }
             

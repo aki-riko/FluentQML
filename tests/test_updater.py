@@ -150,3 +150,33 @@ class TestInstaller:
     def test_open_in_browser_empty(self, qapp):
         up = Updater("owner/repo", "v1.0.3")
         assert up.openInBrowser("") is False
+
+    def test_run_installer_existing_file_no_crash(self, qapp, tmp_path, monkeypatch):
+        """存在的安装包应走到平台启动分支且不崩(回归:曾因未 import sys 报 NameError)。
+
+        mock 掉真实启动(win32 的 ShellExecuteW / 其它平台的 QProcess)与 app.quit,
+        只验证分支可达、返回 True、不抛异常。
+        """
+        import sys as _sys
+        import fluentqml.python.core.updater as mod
+
+        installer = tmp_path / "Setup.exe"
+        installer.write_bytes(b"dummy")
+
+        called = {}
+        if _sys.platform == "win32":
+            import ctypes
+            # mock ShellExecuteW 返回 42(>32 视为成功),避免真启动安装包
+            monkeypatch.setattr(ctypes.windll.shell32, "ShellExecuteW",
+                                lambda *a, **k: called.update(shellexec=True) or 42)
+        else:
+            monkeypatch.setattr(mod.QProcess, "startDetached",
+                                staticmethod(lambda *a, **k: called.update(qprocess=True) or True))
+        # 避免真退出应用
+        monkeypatch.setattr(mod.QCoreApplication, "quit", staticmethod(lambda: None))
+
+        up = Updater("owner/repo", "v1.0.3")
+        result = up.runInstallerAndQuit(str(installer), "/NORESTART")
+        assert result is True
+        assert called.get("shellexec") or called.get("qprocess")
+
