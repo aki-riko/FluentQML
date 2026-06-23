@@ -51,6 +51,7 @@ from .python.core import (
     getShadowManager,
     installDwmSyncFilter,
     SingleInstance,
+    Updater,
 )
 
 # 状态管理模块
@@ -118,6 +119,7 @@ __all__ = [
     "installDwmSyncFilter",
     # Single Instance
     "SingleInstance",
+    "Updater",
     # Window
     "App",
     "Window",

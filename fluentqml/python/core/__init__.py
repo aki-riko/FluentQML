@@ -32,6 +32,7 @@ from .utils import qml_path, register_types, init_style
 from .engine import EngineManager
 from .incubation import FluentIncubationController, install_incubation_controller
 from .single_instance import SingleInstance, ensure_single_instance
+from .updater import Updater
 from .icons import Icon
 from .icon_base import (
     IconCore,
@@ -88,6 +89,8 @@ __all__ = [
     # Single Instance
     "SingleInstance",
     "ensure_single_instance",
+    # Updater
+    "Updater",
     # Icons
     "Icon",
     "IconCore",
