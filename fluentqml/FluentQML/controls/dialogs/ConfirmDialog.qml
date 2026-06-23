@@ -27,6 +27,7 @@ import "../icons"
 //                决定图标 + 主按钮颜色, 默认 warning
 // - title (string): 标题, 默认 "确认操作"
 // - message (string): 消息正文
+// - messageAlignment (int): 消息正文水平对齐, 默认 Text.AlignHCenter; 长文本可设 Text.AlignLeft
 // - confirmText (string): 主按钮文案, 不设则按 level 自动 ("删除"/"确认"/"知道了")
 // - cancelText (string): 取消按钮文案, 默认 "取消"
 // - confirmIcon (string): 主按钮图标, 不设则按 level 自动
@@ -41,6 +42,7 @@ DialogBoxCore {
     property int level: Enums.statusLevel.warning
     property string title: qsTr("确认操作")
     property string message: ""
+    property int messageAlignment: Text.AlignHCenter  // 消息正文水平对齐, 默认居中; 长文本(如更新说明)可设 Text.AlignLeft
     property string confirmText: ""
     property string cancelText: qsTr("取消")
     property string confirmIcon: ""
@@ -191,13 +193,13 @@ DialogBoxCore {
             wrapMode: Text.WordWrap
         }
 
-        // 消息正文 — 居中, body 字号, 次要色
+        // 消息正文 — 对齐方式由 messageAlignment 控制(默认居中), body 字号, 次要色
         Label {
             Layout.fillWidth: true
             text: control.message
             type: Enums.label.type_body
             color: Enums.stateColor.textMedium
-            horizontalAlignment: Text.AlignHCenter
+            horizontalAlignment: control.messageAlignment
             wrapMode: Text.WordWrap
             visible: text !== ""
         }
