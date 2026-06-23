@@ -8,9 +8,9 @@
 
 from typing import List, Optional, TYPE_CHECKING
 from pathlib import Path
-from PySide6.QtQml import QQmlApplicationEngine
+from PySide6.QtQml import QQmlApplicationEngine, QQmlComponent
 from PySide6.QtQuick import QQuickItem
-from PySide6.QtCore import QTimer, QMetaObject, Q_ARG
+from PySide6.QtCore import QTimer, QMetaObject, Q_ARG, QUrl
 from ..core.logger import warning, info, error, debug
 from ..core.engine import EngineManager
 from ..providers import get_svg_provider
@@ -84,24 +84,7 @@ class WindowBuilderMixin:
         icon_dir = qml_dir / "controls" / "icons" / "fluent"
 
         def icon_path(name: str) -> str:
-            if not name:
-                return ""
-            
-            # 支持内置协议
-            if name.startswith(("qrc:/", "file:///", "http://", "https://")):
-                return name
-            
-            # Qt 简写协议
-            if name.startswith(":/"):
-                return "qrc" + name
-                
-            # 本地绝对路径
-            if "\\" in name or (len(name) > 1 and name[1] == ":") or name.startswith("/"):
-                path_str = name.replace("\\", "/")
-                return f"file:///{path_str.lstrip('/')}"
-                
-            # 内置图标回退
-            return f"file:///{(icon_dir / f'{name}.svg').as_posix()}"
+            return self._resolve_icon_path(name)
 
         # 构建导航项
         esc = self._escape_qml
@@ -206,6 +189,95 @@ import "file:///{qml_dir.as_posix()}/controls/containers"
         # ⚠️ apply 子类 __init__ 期间缓存的 setProperty (Mica 等),
         # 这一步必须在 nativeHookReady (50ms 后) 之前完成,否则 hookReady 读到默认值
         self._apply_pending_state()
+
+        # 默认挂载启动画面: 在窗口树就绪后立即创建 SplashScreen 覆盖层,
+        # 框架首屏内容加载完成时会自动 finish() 淡出。必须在框架的异步
+        # mainLoader(startupTimer 50ms 后才 active)之前挂好 _splashInstance,
+        # 此处同步执行 → onLoaded 时 _splashInstance 必已就位。
+        self._create_splash()
+
+    def _resolve_icon_path(self, name: str) -> str:
+        """把图标名/路径解析为 QML 可用的 url。
+
+        从 _create_window 内的闭包提取为实例方法,供窗口图标 / 用户卡片 /
+        启动画面共用同一套解析规则。
+        """
+        if not name:
+            return ""
+
+        # 支持内置协议
+        if name.startswith(("qrc:/", "file:///", "http://", "https://")):
+            return name
+
+        # Qt 简写协议
+        if name.startswith(":/"):
+            return "qrc" + name
+
+        # 本地绝对路径
+        if "\\" in name or (len(name) > 1 and name[1] == ":") or name.startswith("/"):
+            path_str = name.replace("\\", "/")
+            return f"file:///{path_str.lstrip('/')}"
+
+        # 内置图标回退
+        from ..core.utils import qml_path
+        icon_dir = qml_path() / "controls" / "icons" / "fluent"
+        return f"file:///{(icon_dir / f'{name}.svg').as_posix()}"
+
+    def _create_splash(self):
+        """创建启动画面并挂到 QML 根对象的 _splashInstance。
+
+        框架 (NavigationWindowCore._dismissSplashWhenReady) 会在首屏内容
+        真正加载完成时自动调 _splashInstance.finish() 淡出,无需 Python 干预。
+        _splash_enabled=False 时跳过。
+
+        失败不致命: splash 仅是视觉增强,任何异常只 warning 并继续启动。
+        """
+        if not self._splash_enabled or self._window is None:
+            return
+
+        try:
+            from ..core.utils import qml_path
+            esc = self._escape_qml
+
+            # 图标/标题默认回退到窗口自身配置
+            icon = self._splash_icon or self._icon
+            icon_url = self._resolve_icon_path(icon) if icon else ""
+            title = self._splash_title or self._title or ""
+            subtitle = self._splash_subtitle or ""
+
+            qml_dir = qml_path()
+            splash_qml = f"""import QtQuick
+import "file:///{qml_dir.as_posix()}/controls/feedback/SplashScreen"
+
+SplashScreen {{
+    iconSource: "{esc(icon_url)}"
+    title: "{esc(title)}"
+    subtitle: "{esc(subtitle)}"
+}}
+"""
+            component = QQmlComponent(self._engine)
+            component.setData(splash_qml.encode("utf-8"), QUrl("inline-splash"))
+            if component.isError():
+                warning(f"[Splash] 组件加载失败: {[e.toString() for e in component.errors()]}")
+                return
+
+            splash = component.create()
+            if splash is None:
+                warning("[Splash] create() 返回 None,跳过启动画面")
+                return
+
+            # 挂到窗口 contentItem 作为顶层覆盖层(SplashScreen 内部 anchors.fill)
+            splash.setParentItem(self._window.contentItem())
+            splash.setProperty("width", self._window.width())
+            splash.setProperty("height", self._window.height())
+            # QML 端 _dismissSplashWhenReady 读这个引用,首屏就绪时自动 finish()
+            self._window.setProperty("_splashInstance", splash)
+            # 持引用防 GC(QQmlComponent.create 的所有权在调用方)
+            self._splash_instance = splash
+            self._splash_component = component
+            debug("[Splash] 启动画面已挂载,等待首屏就绪后自动淡出")
+        except Exception as e:
+            warning(f"[Splash] 创建启动画面失败(不影响启动): {e}")
 
     def _build_nav_items_json(self, items: List['NavigationItem']) -> str:
         """构建导航项JSON"""

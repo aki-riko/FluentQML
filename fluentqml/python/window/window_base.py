@@ -161,6 +161,18 @@ class WindowCore(QObject, WindowBuilderMixin, PageManagerMixin):
         self._lazy_loading = getConfigManager().lazyLoading
         self._user_card: Optional[Dict[str, str]] = None
 
+        # ==================== Splash 启动画面 ====================
+        # 默认开启: _create_window 末尾会自动实例化 SplashScreen.qml 并挂到 QML
+        # 根对象的 _splashInstance,首屏内容真正加载完成时由框架
+        # (WindowsBar/Split/Filled -> NavigationWindowCore._dismissSplashWhenReady)
+        # 自动淡出。不想要的项目调 setSplashEnabled(False) 关掉即可。
+        self._splash_enabled = True
+        # 文本/图标默认留空,_create_splash 时回退到窗口自身的 icon/title。
+        self._splash_icon = ""        # 图标路径或图标名,空=用 windowIcon
+        self._splash_title = ""       # 标题,空=用 windowTitle
+        self._splash_subtitle = ""    # 副标题/加载文字,空=不显示
+        self._splash_instance: Optional[QQuickItem] = None
+
     # ==================== 窗口属性 ====================
 
     # ⚠️ 内部 helper: setProperty / invokeMethod 在 _window 创建前调用都会被 Qt 静默吞掉。
@@ -318,6 +330,38 @@ class WindowCore(QObject, WindowBuilderMixin, PageManagerMixin):
 
     def setLazyLoading(self, enabled: bool):
         self._lazy_loading = enabled
+
+    # ==================== Splash 启动画面 ====================
+
+    def setSplashEnabled(self, enabled: bool):
+        """开关启动画面(默认开启)。
+
+        必须在 show()/_create_window() 之前调用才生效 —— splash 在
+        _create_window 末尾一次性创建,创建后此开关不再读取。
+
+        Args:
+            enabled: False 则不显示启动画面
+        """
+        self._splash_enabled = enabled
+
+    def showSplash(self, icon: str = "", title: str = "", subtitle: str = ""):
+        """自定义启动画面的图标/标题/副标题并确保开启。
+
+        不调用此方法时 splash 默认开启,图标取 windowIcon、标题取 windowTitle。
+        同样需在 show()/_create_window() 之前调用。
+
+        Args:
+            icon: 图标路径或图标名(空=用 windowIcon)
+            title: 标题(空=用 windowTitle)
+            subtitle: 副标题/加载文字(空=不显示)
+        """
+        self._splash_enabled = True
+        if icon:
+            self._splash_icon = icon
+        if title:
+            self._splash_title = title
+        if subtitle:
+            self._splash_subtitle = subtitle
 
     # ==================== 导航项 ====================
 
