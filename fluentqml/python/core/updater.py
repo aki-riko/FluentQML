@@ -262,8 +262,16 @@ class Updater(QObject):
     def _on_download_finished(self):
         reply = self._download_reply
         self._download_reply = None
-        # 关闭文件句柄
+        # 关闭文件句柄前,先把 reply 缓冲区里可能残留的最后一块数据读完写入,
+        # 防止 finished 触发时尾部字节还未经 readyRead 派发而丢失(成功路径才需要)。
         if self._download_file is not None:
+            try:
+                if reply is not None and reply.error() == QNetworkReply.NetworkError.NoError:
+                    remaining = bytes(reply.readAll())
+                    if remaining:
+                        self._download_file.write(remaining)
+            except OSError as e:
+                logger.warning(f"[Updater] 写入下载文件失败: {e}")
             try:
                 self._download_file.close()
             except OSError:
