@@ -1,5 +1,9 @@
 # FluentQML
 
+> ⚠️ **本仓库已停止维护,迁移至 [PrismQML](https://github.com/aki-riko/PrismQML)。**
+> FluentQML 已升级为多皮肤 UI 引擎 **PrismQML**(Fluent + 新粗野双皮肤、明暗模式)。
+> 新项目请使用 PrismQML(`pip install prismqml`)。本仓库仅作存档,不再更新。
+
 **简体中文** | [English](./README.en.md)
 
 基于 PySide6 + QML 的 Fluent Design 组件库，提供 120fps+ 流畅动画体验。

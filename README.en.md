@@ -1,5 +1,9 @@
 # FluentQML
 
+> ⚠️ **This repository is no longer maintained — moved to [PrismQML](https://github.com/aki-riko/PrismQML).**
+> FluentQML has evolved into the multi-skin UI engine **PrismQML** (Fluent + Neobrutalism skins, light/dark modes).
+> For new projects use PrismQML (`pip install prismqml`). This repo is archived and will not be updated.
+
 [简体中文](./README.md) | **English**
 
 A Fluent Design component library built on PySide6 + QML, delivering 120fps+ smooth animations.
